@@ -67,7 +67,7 @@ const Contact = () => {
             </p>
             <p className="flex items-center text-gray-600 dark:text-gray-300">
               <MapPin className="w-5 h-5 mr-2" />
-              Dhaka, Bangladesh
+              Uttarkhan, Dhaka, Bangladesh
             </p>
           </div>
         </motion.div>
