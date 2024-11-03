@@ -80,19 +80,7 @@ const Contact = () => {
                   className="w-2 h-2 bg-blue-500 rounded-full mr-2"
                   whileHover={{ scale: 1.5 }}
                 />
-                Team Coordination
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-gray-600 dark:text-gray-300 flex items-center"
-              >
-                <motion.span 
-                  className="w-2 h-2 bg-blue-500 rounded-full mr-2"
-                  whileHover={{ scale: 1.5 }}
-                />
-                Risk Management
+                General Secretary at college science club
               </motion.li>
             </ul>
           </motion.div>
