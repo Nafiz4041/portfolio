@@ -70,7 +70,7 @@ const Skills = () => {
       initial="hidden"
       animate={inView ? "show" : "hidden"}
       variants={containerVariants}
-      className="py-20"
+      className="py-20 px-4" // Updated classes
     >
       <div className="max-w-4xl mx-auto">
         <motion.h2 

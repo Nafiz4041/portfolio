@@ -1,73 +1,59 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Facebook, Instagram, Linkedin, Github, Mail, Phone } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Github, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
-  const socialLinks = [
-    {
-      icon: <Facebook className="w-5 h-5" />,
-      href: 'https://www.facebook.com/mohaiminulislam.nafiz?mibextid=ZbWKwL',
-      label: 'Facebook',
-    },
-    {
-      icon: <Instagram className="w-5 h-5" />,
-      href: 'https://www.instagram.com/mohaiminulislamnafiz?igsh=MWVhYnlveXMyc2o4NA==',
-      label: 'Instagram',
-    },
-    {
-      icon: <Linkedin className="w-5 h-5" />,
-      href: 'https://www.linkedin.com/in/mohaiminul-nafiz/',
-      label: 'LinkedIn',
-    },
-    {
-      icon: <Github className="w-5 h-5" />,
-      href: 'https://github.com/Nafiz4041',
-      label: 'GitHub',
-    },
-    {
-      icon: <Mail className="w-5 h-5" />,
-      href: 'mailto:mohaiminnafiz13@gmail.com',
-      label: 'Email',
-    },
-    {
-      icon: <Phone className="w-5 h-5" />,
-      href: 'https://wa.me/01857316721',
-      label: 'WhatsApp',
-    },
-  ];
-
   return (
-    <footer className="bg-white dark:bg-gray-900 py-12">
+    <footer className="bg-gray-800 text-white py-8">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="flex flex-col items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-wrap justify-center gap-6 mb-8"
-          >
-            {socialLinks.map((link) => (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                {link.icon}
-              </motion.a>
-            ))}
-          </motion.div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-gray-600 dark:text-gray-400 text-center"
-          >
-            © {new Date().getFullYear()} MD. MOHAIMINUL ISLAM NAFIZ. All rights reserved.
-          </motion.p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <li><a href="#home" className="hover:underline">Home</a></li>
+              <li><a href="#about" className="hover:underline">About</a></li>
+              <li><a href="#experience" className="hover:underline">Experience</a></li>
+              <li><a href="#skills" className="hover:underline">Skills</a></li>
+              <li><a href="#education" className="hover:underline">Education</a></li>
+              <li><a href="#contact" className="hover:underline">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Contact</h3>
+            <ul className="space-y-2">
+              <li className="flex items-center">
+                <Mail className="w-5 h-5 mr-2" />
+                <a href="mailto:mohaiminnafiz13@gmail.com" className="hover:underline">mohaiminnafiz13@gmail.com</a>
+              </li>
+              <li className="flex items-center">
+                <Phone className="w-5 h-5 mr-2" />
+                <a href="tel:+8801857316721" className="hover:underline">01857316721</a>
+              </li>
+              <li className="flex items-center">
+                <MapPin className="w-5 h-5 mr-2" />
+                <a href="https://maps.app.goo.gl/H36yc1RBfvhPXweC8" className="hover:underline">Location</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
+            <div className="flex space-x-4">
+              <a href="https://facebook.com/yourprofile" className="hover:underline">
+                <Facebook className="w-6 h-6" />
+              </a>
+              <a href="https://instagram.com/yourprofile" className="hover:underline">
+                <Instagram className="w-6 h-6" />
+              </a>
+              <a href="https://linkedin.com/in/yourprofile" className="hover:underline">
+                <Linkedin className="w-6 h-6" />
+              </a>
+              <a href="https://github.com/yourprofile" className="hover:underline">
+                <Github className="w-6 h-6" />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="text-center mt-8">
+          <p>&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
         </div>
       </div>
     </footer>
