@@ -5,8 +5,8 @@ const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white py-8">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-8 md:space-y-0">
+          <div className="w-full md:w-auto">
             <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li><a href="#home" className="hover:underline">Home</a></li>
@@ -17,7 +17,7 @@ const Footer = () => {
               <li><a href="#contact" className="hover:underline">Contact</a></li>
             </ul>
           </div>
-          <div>
+          <div className="w-full md:w-auto">
             <h3 className="text-xl font-semibold mb-4">Contact</h3>
             <ul className="space-y-2">
               <li className="flex items-center">
@@ -34,7 +34,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div>
+          <div className="w-full md:w-auto">
             <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
               <a href="https://facebook.com/yourprofile" className="hover:underline">
