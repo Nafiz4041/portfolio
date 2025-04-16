@@ -143,7 +143,7 @@ const Contact = () => {
                 className="text-gray-600 dark:text-gray-300 flex items-center"
               >
                 <Facebook className="w-5 h-5 mr-2 text-blue-500" />
-                <a href="https://www.facebook.com/mohaiminulislam.nafiz" className="hover:underline">Facebook/</a>
+                <a href="https://www.facebook.com/mohaiminulislam.nafiz" className="hover:underline">Facebook</a>
               </motion.li>
               <motion.li
                 initial={{ opacity: 0, x: -20 }}
