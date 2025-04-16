@@ -161,7 +161,7 @@ const Contact = () => {
                 className="text-gray-600 dark:text-gray-300 flex items-center"
               >
                 <Github className="w-5 h-5 mr-2 text-blue-500" />
-                <a href="https://github.com/yourprofile" className="hover:underline">Github</a>
+                <a href="https://github.com/Nafiz4041" className="hover:underline">Github</a>
               </motion.li>
               <motion.li
                 initial={{ opacity: 0, x: -20 }}
