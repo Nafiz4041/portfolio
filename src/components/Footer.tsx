@@ -50,7 +50,7 @@ const Footer = () => {
 
         {/* Brand */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-bold">N</div>
+          <img src="/images/android-chrome-192x192.png" alt="Nafiz" className="w-10 h-10 rounded-xl object-cover object-top" />
           <div>
             <p className="text-sm font-bold text-white">MD. Mohaiminul Islam Nafiz</p>
             <p className="text-[10px] text-white/30 uppercase tracking-widest font-mono">
