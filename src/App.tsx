@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { Sun, Moon } from 'lucide-react';
+import { useEffect, useRef } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -11,47 +9,58 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    document.title = "Md. Mohaiminul Islam Nafiz";
+    document.title = 'Nafiz | Business Development Executive';
+
+    // Cursor glow
+    const handleMouseMove = (e: MouseEvent) => {
+      if (cursorRef.current) {
+        cursorRef.current.style.left = e.clientX + 'px';
+        cursorRef.current.style.top = e.clientY + 'px';
+      }
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+
+    // Reveal on scroll
+    const checkReveals = () => {
+      document.querySelectorAll('.reveal').forEach((el) => {
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.88) {
+          el.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', checkReveals);
+    setTimeout(checkReveals, 200);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', checkReveals);
+    };
   }, []);
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    document.documentElement.classList.toggle('dark');
-  };
-
   return (
-    <div className={`${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'} transition-colors duration-300`}>
-      <Header />
-      <button
-        onClick={toggleDarkMode}
-        className="fixed top-24 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-300 z-50"
-        aria-label="Toggle dark mode"
-      >
-        {darkMode ? <Sun className="w-6 h-6 text-yellow-500" /> : <Moon className="w-6 h-6 text-gray-700" />}
-      </button>
+    <div className="bg-[#050505] text-white min-h-screen">
+      {/* Noise + cursor overlays */}
+      <div className="noise-overlay" />
+      <div ref={cursorRef} className="cursor-glow" />
 
-      <main className="pt-16">
-        <section id="home">
-          <Hero />
-        </section>
-        <section id="about">
-          <About />
-        </section>
-        <section id="experience">
-          <Experience />
-        </section>
-        <section id="skills">
-          <Skills />
-        </section>
-        <section id="education">
-          <Education />
-        </section>
-        <section id="contact">
-          <Contact />
-        </section>
+      {/* Animated mesh background */}
+      <div className="fixed inset-0 -z-10 overflow-hidden">
+        <div className="blob animate-blob-move absolute w-[600px] h-[600px] rounded-full opacity-[0.12] blur-[100px] bg-blue-700" style={{ top: '-5%', left: '-10%' }} />
+        <div className="blob animate-blob-move absolute w-[500px] h-[500px] rounded-full opacity-[0.12] blur-[100px] bg-purple-900" style={{ bottom: '10%', right: '-5%', animationDelay: '-7s' }} />
+        <div className="blob animate-blob-move absolute w-[280px] h-[280px] rounded-full opacity-[0.12] blur-[100px] bg-cyan-700" style={{ top: '50%', left: '45%', animationDelay: '-13s' }} />
+      </div>
+
+      <Header />
+      <main>
+        <section id="home"><Hero /></section>
+        <section id="about"><About /></section>
+        <section id="experience"><Experience /></section>
+        <section id="skills"><Skills /></section>
+        <section id="education"><Education /></section>
+        <section id="contact"><Contact /></section>
       </main>
       <Footer />
     </div>
