@@ -1,60 +1,15 @@
-import React from 'react';
-import { Facebook, Instagram, Linkedin, Github, Mail, Phone, MapPin } from 'lucide-react';
-
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-8">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-8 md:space-y-0">
-          <div className="w-full md:w-auto">
-            <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li><a href="#home" className="hover:underline">Home</a></li>
-              <li><a href="#about" className="hover:underline">About</a></li>
-              <li><a href="#experience" className="hover:underline">Experience</a></li>
-              <li><a href="#skills" className="hover:underline">Skills</a></li>
-              <li><a href="#education" className="hover:underline">Education</a></li>
-              <li><a href="#contact" className="hover:underline">Contact</a></li>
-            </ul>
-          </div>
-          <div className="w-full md:w-auto">
-            <h3 className="text-xl font-semibold mb-4">Contact</h3>
-            <ul className="space-y-2">
-              <li className="flex items-center">
-                <Mail className="w-5 h-5 mr-2" />
-                <a href="mailto:mohaiminnafiz13@gmail.com" className="hover:underline">mohaiminnafiz13@gmail.com</a>
-              </li>
-              <li className="flex items-center">
-                <Phone className="w-5 h-5 mr-2" />
-                <a href="tel:+8801857316721" className="hover:underline">01857316721</a>
-              </li>
-              <li className="flex items-center">
-                <MapPin className="w-5 h-5 mr-2" />
-                <a href="https://maps.app.goo.gl/H36yc1RBfvhPXweC8" className="hover:underline">Location</a>
-              </li>
-            </ul>
-          </div>
-          <div className="w-full md:w-auto">
-            <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
-            <div className="flex space-x-4">
-              <a href="https://facebook.com/yourprofile" className="hover:underline">
-                <Facebook className="w-6 h-6" />
-              </a>
-              <a href="https://instagram.com/yourprofile" className="hover:underline">
-                <Instagram className="w-6 h-6" />
-              </a>
-              <a href="https://linkedin.com/in/yourprofile" className="hover:underline">
-                <Linkedin className="w-6 h-6" />
-              </a>
-              <a href="https://github.com/yourprofile" className="hover:underline">
-                <Github className="w-6 h-6" />
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="text-center mt-8">
-          <p>&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
-        </div>
+    <footer className="py-10 px-6 md:px-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-5">
+      <div className="flex items-center gap-3">
+        <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-sm">N</div>
+        <p className="text-white/25 text-xs font-medium uppercase tracking-widest">© 2025 MD. Mohaiminul Islam Nafiz</p>
+      </div>
+      <div className="flex gap-6 text-[10px] font-bold uppercase tracking-widest text-white/25">
+        <a href="https://github.com/Nafiz4041" target="_blank" rel="noreferrer" className="hover:text-blue-400 transition-colors">GitHub</a>
+        <a href="https://mohaiminulislam.netlify.app" target="_blank" rel="noreferrer" className="hover:text-blue-400 transition-colors">Portfolio</a>
+        <a href="mailto:mohaiminnafiz13@gmail.com" className="hover:text-blue-400 transition-colors">Email</a>
+        <a href="#home" className="hover:text-blue-400 transition-colors">↑ Top</a>
       </div>
     </footer>
   );
