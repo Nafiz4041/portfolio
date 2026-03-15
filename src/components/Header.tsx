@@ -23,7 +23,7 @@ const Header = () => {
     <>
       <header className={`fixed top-0 left-0 right-0 z-[200] px-6 md:px-12 py-4 flex justify-between items-center transition-all duration-500 ${scrolled ? 'glass border-b border-white/10 py-3' : 'bg-transparent'}`}>
         <a href="#home" className="flex items-center gap-3">
-          <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center font-bold text-sm">N</div>
+          <img src="/images/android-chrome-192x192.png" alt="Nafiz" className="w-9 h-9 rounded-xl object-cover object-top" />
           <span className="text-[10px] uppercase tracking-[0.4em] font-bold hidden md:block text-white/50">Mohaiminul Nafiz</span>
         </a>
 
