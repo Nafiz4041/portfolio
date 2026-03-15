@@ -1,75 +1,60 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { GraduationCap } from 'lucide-react';
-
 const Education = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const education = [
-    {
-      degree: 'BSc in CSE',
-      institution: 'Daffodil International University',
-      location: 'Birulia, Savar, Dhaka',
-      period: '2021 - Present',
-    },
-    {
-      degree: 'HSC in Science',
-      institution: 'Nawab Habibullah Model School and College',
-      location: 'Uttara, Dhaka',
-      grade: 'GPA: 4.58',
-      period: '2018 - 2020',
-    },
-    {
-      degree: 'SSC in Science',
-      institution: 'Nawab Habibullah Model School and College',
-      location: 'Uttara, Dhaka',
-      grade: 'GPA: 4.56',
-      period: '2016 - 2018',
-    },
-  ];
-
   return (
-    <motion.section
-      ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5 }}
-      className="py-20 px-4"
-    >
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white">Education</h2>
-        <div className="space-y-8">
-          {education.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -50 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
-            >
-              <div className="flex items-start space-x-4">
-                <div className="bg-blue-500 p-2 rounded-lg">
-                  <GraduationCap className="w-6 h-6 text-white" />
+    <div className="py-28 px-6 md:px-12">
+      <div className="max-w-[1300px] mx-auto grid lg:grid-cols-2 gap-12">
+
+        {/* Education */}
+        <div className="reveal">
+          <div className="sec-label">05 — Academics</div>
+          <h2 className="text-4xl font-bold mb-10 border-l-4 border-blue-600 pl-5 tracking-tight leading-tight">Academic<br />Foundation</h2>
+          <div className="flex flex-col gap-5">
+            <div className="glass rounded-2xl p-6 hover:border-blue-500/30 transition-all">
+              <div className="font-mono text-[10px] text-blue-400 uppercase tracking-widest mb-1">2021 – 2024</div>
+              <div className="text-lg font-bold mb-1">BSc in Computer Science & Engineering</div>
+              <div className="text-sm text-white/35 mb-3">Daffodil International University</div>
+              <span className="font-mono text-[10px] font-bold uppercase text-blue-400 tracking-widest">CGPA: 3.23</span>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { year: '2018–2020', deg: 'H.S.C', inst: 'Nawab Habibullah Model School & College', gpa: 'GPA: 4.58' },
+                { year: '2016–2018', deg: 'S.S.C', inst: 'Nawab Habibullah Model School & College', gpa: 'GPA: 4.56' },
+              ].map((e) => (
+                <div key={e.deg} className="glass rounded-2xl p-5 hover:border-white/20 transition-all">
+                  <div className="font-mono text-[10px] text-white/30 uppercase mb-1">{e.year}</div>
+                  <div className="font-bold">{e.deg}</div>
+                  <div className="text-xs text-white/35 mt-1 mb-3">{e.inst}</div>
+                  <span className="font-mono text-[10px] font-bold uppercase text-blue-400 tracking-widest">{e.gpa}</span>
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{item.degree}</h3>
-                  <p className="text-blue-500 dark:text-blue-400 font-medium">{item.institution}</p>
-                  <p className="text-gray-600 dark:text-gray-300">{item.location}</p>
-                  {item.grade && (
-                    <p className="text-green-500 dark:text-green-400 font-medium">{item.grade}</p>
-                  )}
-                  <p className="text-gray-500 dark:text-gray-400">{item.period}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              ))}
+            </div>
+          </div>
         </div>
+
+        {/* Leadership */}
+        <div className="reveal" style={{ transitionDelay: '100ms' }}>
+          <div className="sec-label">06 — Activities</div>
+          <h2 className="text-4xl font-bold mb-10 border-l-4 border-cyan-500 pl-5 tracking-tight leading-tight">Leadership<br />Roles</h2>
+          <div className="glass rounded-3xl p-8 relative overflow-hidden h-auto flex flex-col justify-between">
+            <div className="absolute -right-8 -top-8 w-48 h-48 bg-blue-600/10 rounded-full blur-3xl" />
+            <div>
+              <div className="sec-label text-cyan-400 mb-1">General Secretary</div>
+              <h3 className="text-2xl font-bold mb-1">College Science Club</h3>
+              <p className="font-mono text-[10px] text-blue-400/70 uppercase tracking-widest mb-5">2019 – 2020 · Nawab Habibullah Model School & College</p>
+              <p className="text-sm text-white/50 leading-relaxed">
+                Spearheaded club initiatives and organized major events including a city-wide{' '}
+                <strong className="text-white">Quiz Olympiad</strong> to foster scientific curiosity and student engagement across campus.
+              </p>
+            </div>
+            <div className="flex gap-2 flex-wrap mt-6">
+              {['Event Organization', 'Team Leadership', 'Community Impact'].map((t) => (
+                <span key={t} className="px-3 py-1 rounded-full border border-white/10 text-[10px] font-bold uppercase tracking-widest text-white/40">{t}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
       </div>
-    </motion.section>
+    </div>
   );
 };
 
