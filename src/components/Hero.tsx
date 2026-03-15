@@ -1,122 +1,84 @@
-import { motion } from 'framer-motion';
-import { Mail, MapPin, ExternalLink } from 'lucide-react';
-
 const Hero = () => {
-  const fadeIn = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
-  };
-
-  const imageAnimation = {
-    initial: { scale: 0.8, opacity: 0 },
-    animate: { 
-      scale: 1, 
-      opacity: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 100,
-        damping: 15
-      }
-    },
-    hover: {
-      scale: 1.05,
-      rotate: [0, -5, 5, 0],
-      transition: {
-        type: 'spring',
-        stiffness: 300,
-        rotate: {
-          duration: 0.5,
-          repeat: 0
-        }
-      }
-    }
-  };
-
   return (
-    <motion.section 
-      initial="initial"
-      animate="animate"
-      className="min-h-screen flex items-center justify-center py-20 px-4"
-    >
-      <div className="max-w-6xl w-full flex flex-col md:flex-row items-center justify-between">
-        <motion.div 
-          className="md:w-1/2 text-center md:text-left mb-12 md:mb-0"
-          variants={fadeIn}
-        >
-          <motion.h1 
-            className="text-4xl md:text-6xl font-bold mb-4 text-gray-800 dark:text-white"
-            whileHover={{ scale: 1.02 }}
-          >
-            MD. MOHAIMINUL ISLAM NAFIZ
-          </motion.h1>
-          
-          <motion.p 
-            className="text-xl text-gray-600 dark:text-gray-300 mb-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            BSc in CSE Student & Former Operations Coordinator
-          </motion.p>
+    <div className="relative overflow-hidden">
+      <div className="watermark" style={{ bottom: 0, left: 0 }}>NAFIZ</div>
+      <div className="max-w-[1300px] mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-center px-6 md:px-12 pt-28 pb-16 min-h-screen">
 
-          <motion.div 
-            className="flex flex-col md:flex-row justify-center md:justify-start items-center space-y-4 md:space-y-0 md:space-x-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
-            <motion.span 
-              className="flex items-center"
-              whileHover={{ scale: 1.05, x: 5 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <MapPin className="w-5 h-5 mr-2 text-blue-500" />
-              <span className="text-gray-600 dark:text-gray-300">Dhaka, Bangladesh</span>
-            </motion.span>
-            
-            <motion.span 
-              className="flex items-center"
-              whileHover={{ scale: 1.05, x: 5 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Mail className="w-5 h-5 mr-2 text-blue-500" />
-              <span className="text-gray-600 dark:text-gray-300">mohaiminnafiz13@gmail.com</span>
-            </motion.span>
-          </motion.div>
-        </motion.div>
+        {/* Left */}
+        <div className="space-y-7 relative z-10">
+          <div className="reveal inline-flex items-center gap-3 px-4 py-2 rounded-full glass glass-blue text-blue-400 text-[10px] font-bold uppercase tracking-widest">
+            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse-dot block" />
+            Available for Opportunities · Dhaka, BD
+          </div>
 
-        <motion.div 
-          className="relative w-64 h-64 md:w-80 md:h-80 group"
-          variants={imageAnimation}
-          whileHover="hover"
-        >
-          <motion.div
-            className="absolute inset-0 bg-blue-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"
-          />
-          <img
-            src="/images/profile.jpg"  // Use local image path
-            alt="Profile"
-            className="w-full h-full rounded-full object-cover border-4 border-blue-500"
-            style={{ objectPosition: 'top center' }}
-          />
-          <motion.div
-            className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 opacity-0 group-hover:opacity-50 blur-md transition-opacity duration-300 -z-10"
-          />
-          <motion.div 
-            className="absolute -bottom-4 -right-4 bg-blue-500 text-white p-2 rounded-full shadow-md cursor-pointer"
-            whileHover={{
-              scale: 1.2,
-              rotate: 90,
-              transition: { type: 'spring', stiffness: 300 }
-            }}
-          >
-            <ExternalLink className="w-6 h-6" />
-          </motion.div>
-        </motion.div>
+          <h1 className="reveal text-[clamp(2.8rem,6vw,5.2rem)] font-bold leading-[1.05] tracking-tight" style={{ transitionDelay: '100ms' }}>
+            Md. Mohaiminul<br />
+            <span className="grad-blue" style={{ textShadow: '0 0 40px rgba(59,130,246,.25)' }}>Islam Nafiz</span>
+          </h1>
+
+          <p className="reveal text-white/50 text-base md:text-lg font-light leading-relaxed max-w-lg" style={{ transitionDelay: '200ms' }}>
+            <strong className="text-white font-semibold">Business Development Executive</strong> · Upwork Growth Strategist · Tech Enthusiast.<br />
+            Helping tech teams acquire clients, scale operations, and grow on platforms like Upwork.
+          </p>
+
+          <div className="reveal flex flex-wrap gap-3" style={{ transitionDelay: '300ms' }}>
+            <a href="#skills" className="px-6 py-3 bg-blue-600 text-white text-sm font-bold rounded-2xl hover:bg-blue-500 transition-all hover:shadow-lg hover:shadow-blue-600/30 hover:-translate-y-0.5">
+              View Portfolio →
+            </a>
+            <a href="#contact" className="px-6 py-3 glass text-white text-sm font-bold rounded-2xl hover:border-blue-500/50 transition-all hover:-translate-y-0.5">
+              Contact Me
+            </a>
+          </div>
+
+          <div className="reveal grid grid-cols-3 gap-4 pt-2" style={{ transitionDelay: '400ms' }}>
+            {[
+              { num: '4+', label: 'Yrs Experience', color: 'text-blue-400' },
+              { num: '3', label: 'Companies', color: 'text-cyan-400' },
+              { num: '3.23', label: 'CGPA', color: 'text-white' },
+            ].map((s) => (
+              <div key={s.label} className="glass rounded-2xl p-4 text-center hover:glass-blue transition-all">
+                <p className={`text-2xl font-bold ${s.color}`}>{s.num}</p>
+                <p className="text-[10px] uppercase tracking-widest text-white/40 mt-1">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right — Photo */}
+        <div className="reveal flex justify-center lg:justify-end" style={{ transitionDelay: '150ms' }}>
+          <div className="relative">
+            {/* Spinning rings */}
+            <div className="animate-spin-slow absolute inset-[-20px] rounded-full border border-dashed border-blue-600/20" />
+            <div className="animate-spin-slow-reverse absolute inset-[-40px] rounded-full border border-dashed border-purple-600/10" />
+            {/* Glow */}
+            <div className="absolute inset-0 rounded-3xl bg-blue-600/15 blur-2xl" />
+            {/* Card */}
+            <div className="relative glass glow-box rounded-3xl overflow-hidden animate-float w-72 md:w-80" style={{ aspectRatio: '3/4' }}>
+              <img src="/images/profile.jpg" alt="Nafiz" className="w-full h-full object-cover object-top" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 glass rounded-xl px-4 py-3">
+                <p className="text-xs font-bold text-white">MD. Mohaiminul Islam Nafiz</p>
+                <span className="text-[10px] text-blue-400 uppercase tracking-widest">Business Dev. Executive</span>
+              </div>
+            </div>
+            {/* Floating tags */}
+            <div className="absolute -top-4 -right-4 glass glass-blue px-3 py-2 rounded-xl text-[10px] font-bold uppercase tracking-wider text-blue-300 animate-float-delay">
+              🚀 Lead Gen Expert
+            </div>
+            <div className="absolute -bottom-4 -left-4 glass px-3 py-2 rounded-xl text-[10px] font-bold uppercase tracking-wider text-white/70 animate-float">
+              📊 Upwork Strategy
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll hint */}
+        <div className="col-span-full flex flex-col items-center gap-2 text-white/20 reveal">
+          <span className="text-[9px] uppercase tracking-[0.3em]">Scroll</span>
+          <div className="w-px h-12 bg-gradient-to-b from-blue-500/50 to-transparent" />
+        </div>
       </div>
-    </motion.section>
+    </div>
   );
-}
+};
 
 export default Hero;
