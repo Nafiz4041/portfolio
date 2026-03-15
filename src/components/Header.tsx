@@ -1,94 +1,64 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
-const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const menuItems = [
+  { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Education', href: '#education' },
+  { label: 'Contact', href: '#contact' },
+];
 
-  const menuItems = [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Education', href: '#education' },
-    { label: 'Contact', href: '#contact' },
-  ];
+const Header = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
-      }`}
-    >
-      <nav className="max-w-6xl mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <motion.a
-            href="#home"
-            className="text-xl font-bold text-gray-800 dark:text-white"
-            whileHover={{ scale: 1.05 }}
-          >
-            MN
-          </motion.a>
+    <>
+      <header className={`fixed top-0 left-0 right-0 z-[200] px-6 md:px-12 py-4 flex justify-between items-center transition-all duration-500 ${scrolled ? 'glass border-b border-white/10 py-3' : 'bg-transparent'}`}>
+        <a href="#home" className="flex items-center gap-3">
+          <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center font-bold text-sm">N</div>
+          <span className="text-[10px] uppercase tracking-[0.4em] font-bold hidden md:block text-white/50">Mohaiminul Nafiz</span>
+        </a>
 
-          {/* Desktop Menu */}
-          <ul className="hidden md:flex space-x-8">
+        <div className="hidden md:flex items-center gap-8">
+          <nav className="flex gap-7">
             {menuItems.map((item) => (
-              <motion.li key={item.label} whileHover={{ scale: 1.1 }}>
-                <a
-                  href={item.href}
-                  className="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
-                >
-                  {item.label}
-                </a>
-              </motion.li>
+              <a key={item.label} href={item.href} className="nav-link text-[10px] font-bold uppercase tracking-widest text-white/40 hover:text-white transition-colors">
+                {item.label}
+              </a>
             ))}
-          </ul>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-gray-600 dark:text-gray-300"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          </nav>
+          <a href="mailto:mohaiminnafiz13@gmail.com" className="px-5 py-2 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-widest rounded-full hover:bg-blue-500 transition-all hover:shadow-lg hover:shadow-blue-600/30">
+            Hire Me
+          </a>
         </div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden mt-4"
-          >
-            <ul className="flex flex-col space-y-4">
-              {menuItems.map((item) => (
-                <li key={item.label}>
-                  <a
-                    href={item.href}
-                    className="block text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
-      </nav>
-    </motion.header>
+        <button className="md:hidden" onClick={() => setMenuOpen(true)}>
+          <Menu className="w-6 h-6" />
+        </button>
+      </header>
+
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-[300] glass flex flex-col items-center justify-center gap-8">
+          <button className="absolute top-6 right-6" onClick={() => setMenuOpen(false)}>
+            <X className="w-8 h-8" />
+          </button>
+          {menuItems.map((item) => (
+            <a key={item.label} href={item.href} className="text-2xl font-bold hover:text-blue-400 transition-colors" onClick={() => setMenuOpen(false)}>
+              {item.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </>
   );
 };
 
