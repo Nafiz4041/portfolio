@@ -1,182 +1,80 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Mail, MapPin, Languages, Award, Linkedin, Twitter, Facebook, Instagram, Github, Phone } from 'lucide-react';
+import { useState } from 'react';
 
 const Contact = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [status, setStatus] = useState('');
+  const [statusColor, setStatusColor] = useState('text-green-400');
+
+  const handleSubmit = () => {
+    if (!form.name || !form.email || !form.message) {
+      setStatusColor('text-red-400');
+      setStatus('⚠ Please fill in your name, email, and message.');
+      return;
+    }
+    setStatusColor('text-green-400');
+    setStatus("✓ Message sent! I'll get back to you shortly.");
+    setForm({ name: '', email: '', subject: '', message: '' });
+    setTimeout(() => setStatus(''), 5000);
+  };
 
   return (
-    <motion.section
-      ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5 }}
-      className="py-20 px-4"
-    >
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white">Additional Information</h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
-          >
-            <h3 className="text-xl font-semibold mb-4 flex items-center text-gray-800 dark:text-white">
-              <Languages className="w-6 h-6 mr-2 text-blue-500" />
-              Languages
-            </h3>
-            <ul className="space-y-2">
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-gray-600 dark:text-gray-300 flex items-center"
-              >
-                <motion.span 
-                  className="w-2 h-2 bg-blue-500 rounded-full mr-2"
-                  whileHover={{ scale: 1.5 }}
-                />
-                Bengali (Native)
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-gray-600 dark:text-gray-300 flex items-center"
-              >
-                <motion.span 
-                  className="w-2 h-2 bg-blue-500 rounded-full mr-2"
-                  whileHover={{ scale: 1.5 }}
-                />
-                English (B2)
-              </motion.li>
-            </ul>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow"
-          >
-            <h3 className="text-xl font-semibold mb-4 flex items-center text-gray-800 dark:text-white">
-              <Award className="w-6 h-6 mr-2 text-blue-500" />
-              Leadership
-            </h3>
-            <ul className="space-y-2">
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-gray-600 dark:text-gray-300 flex items-center"
-              >
-                <motion.span 
-                  className="w-2 h-2 bg-blue-500 rounded-full mr-2"
-                  whileHover={{ scale: 1.5 }}
-                />
-                General Secretary at college science club
-              </motion.li>
-            </ul>
-          </motion.div>
+    <div className="py-28 px-6 md:px-12 relative overflow-hidden">
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-600/4 rounded-full blur-[80px]" />
+      </div>
+      <div className="max-w-[860px] mx-auto">
+        <div className="reveal text-center mb-12">
+          <div className="sec-label flex justify-center">07 — Get In Touch</div>
+          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4 leading-tight">Ready to scale?</h2>
+          <p className="text-white/45 text-lg max-w-md mx-auto font-light leading-relaxed">
+            Let's discuss how I can help your team secure more projects and optimize growth operations.
+          </p>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow mt-8"
-        >
-          <h3 className="text-xl font-semibold mb-4 flex items-center text-gray-800 dark:text-white">
-            <Phone className="w-6 h-6 mr-2 text-blue-500" /> {/* Changed icon to Phone */}
-            Contacts
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <ul className="space-y-2">
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-gray-600 dark:text-gray-300 flex items-center"
-              >
-                <Mail className="w-5 h-5 mr-2 text-blue-500" />
-                <a href="mailto:mohaiminnafiz13@gmail.com" className="hover:underline">mohaiminnafiz13@gmail.com</a>
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-gray-600 dark:text-gray-300 flex items-center"
-              >
-                <Phone className="w-5 h-5 mr-2 text-blue-500" />
-                <a href="tel:+8801857316721" className="hover:underline">01857316721</a>
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-gray-600 dark:text-gray-300 flex items-center"
-              >
-                <Linkedin className="w-5 h-5 mr-2 text-blue-500" />
-                <a href="https://linkedin.com/in/yourprofile" className="hover:underline">LinkedIn</a>
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="text-gray-600 dark:text-gray-300 flex items-center"
-              >
-                <Twitter className="w-5 h-5 mr-2 text-blue-500" />
-                <a href="https://twitter.com/yourprofile" className="hover:underline">Twitter</a>
-              </motion.li>
-            </ul>
-            <ul className="space-y-2">
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="text-gray-600 dark:text-gray-300 flex items-center"
-              >
-                <Facebook className="w-5 h-5 mr-2 text-blue-500" />
-                <a href="https://www.facebook.com/mohaiminulislam.nafiz" className="hover:underline">Facebook</a>
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="text-gray-600 dark:text-gray-300 flex items-center"
-              >
-                <Instagram className="w-5 h-5 mr-2 text-blue-500" />
-                <a href="https://instagram.com/yourprofile" className="hover:underline">Instagram</a>
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                className="text-gray-600 dark:text-gray-300 flex items-center"
-              >
-                <Github className="w-5 h-5 mr-2 text-blue-500" />
-                <a href="https://github.com/Nafiz4041" className="hover:underline">Github</a>
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-                className="text-gray-600 dark:text-gray-300 flex items-center"
-              >
-                <MapPin className="w-5 h-5 mr-2 text-blue-500" />
-                <a href="https://maps.app.goo.gl/H36yc1RBfvhPXweC8" className="hover:underline">Location</a>
-              </motion.li>
-            </ul>
+        <div className="glass rounded-[2.5rem] p-1.5 border-white/10 reveal">
+          <div className="bg-black/50 rounded-[2.2rem] p-8 md:p-12">
+            <div className="grid md:grid-cols-2 gap-10 mb-10">
+              {/* Info */}
+              <div className="space-y-6">
+                {[
+                  { label: 'Email', value: 'mohaiminnafiz13@gmail.com', href: 'mailto:mohaiminnafiz13@gmail.com' },
+                  { label: 'Phone', value: '01857316721', href: 'tel:+8801857316721' },
+                  { label: 'Location', value: 'Uttarkhan, Dhaka, BD' },
+                ].map((item) => (
+                  <div key={item.label}>
+                    <div className="text-[10px] text-blue-400 uppercase font-bold tracking-widest font-mono mb-1">{item.label}</div>
+                    {item.href ? (
+                      <a href={item.href} className="text-lg font-medium hover:text-blue-400 transition-colors">{item.value}</a>
+                    ) : (
+                      <p className="text-lg font-medium">{item.value}</p>
+                    )}
+                  </div>
+                ))}
+                <div>
+                  <div className="text-[10px] text-blue-400 uppercase font-bold tracking-widest font-mono mb-2">Connect</div>
+                  <div className="flex gap-3">
+                    <a href="https://github.com/Nafiz4041" target="_blank" rel="noreferrer" className="px-4 py-2 glass rounded-xl text-sm font-medium hover:bg-white/10 transition-all">↗ GitHub</a>
+                    <a href="https://mohaiminulislam.netlify.app" target="_blank" rel="noreferrer" className="px-4 py-2 glass rounded-xl text-sm font-medium hover:bg-white/10 transition-all">↗ Portfolio</a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Form */}
+              <div>
+                <input className="form-input" placeholder="Your name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+                <input className="form-input" type="email" placeholder="Your email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+                <input className="form-input" placeholder="Subject" value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} />
+                <textarea className="form-input" placeholder="Your message…" value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} />
+                {status && <p className={`text-sm font-bold font-mono mb-3 ${statusColor}`}>{status}</p>}
+              </div>
+            </div>
+            <button onClick={handleSubmit} className="w-full py-5 bg-white text-black font-bold rounded-2xl text-base hover:bg-blue-500 hover:text-white transition-all hover:shadow-lg hover:shadow-blue-600/30">
+              Start a Conversation →
+            </button>
           </div>
-        </motion.div>
+        </div>
       </div>
-    </motion.section>
+    </div>
   );
 };
 
